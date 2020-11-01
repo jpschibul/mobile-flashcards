@@ -5,7 +5,7 @@ import Card  from './Card'
 import { black, white } from '../utils/colors'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { CommonActions } from '@react-navigation/native'
-import { clearLocalNotification, setLocalNotification } from '../helpers/notifications'
+import { clearLocalNotification, setLocalNotification } from '../utils/notifications'
 
 class Quiz extends Component {
     state = {
