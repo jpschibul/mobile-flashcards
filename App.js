@@ -13,7 +13,7 @@ import { Provider } from 'react-redux'
 import { createStore} from 'redux'
 import CreateCard from './components/CreateCard'
 import reducer from './reducers'
-import {setLocalNotification, clearLocalNotification} from './utils/notifications';
+import { setLocalNotification } from './utils/notifications'
 
 const Tab = createBottomTabNavigator()
 
@@ -62,9 +62,8 @@ const Stack = createStackNavigator()
 export default class App extends Component  {
   
   componentDidMount() {
-    clearLocalNotification()
-      .then(setLocalNotification)
-  }
+    setLocalNotification()
+}
  
 
 render () {
