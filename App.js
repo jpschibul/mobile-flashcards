@@ -13,10 +13,7 @@ import { Provider } from 'react-redux'
 import { createStore} from 'redux'
 import CreateCard from './components/CreateCard'
 import reducer from './reducers'
-import {
-  setLocalNotification,
-  clearLocalNotification
-} from './utils/notifications';
+import {setLocalNotification, clearLocalNotification} from './utils/notifications';
 
 const Tab = createBottomTabNavigator()
 
@@ -64,6 +61,10 @@ const Stack = createStackNavigator()
 
 export default class App extends Component  {
   
+  componentDidMount() {
+    clearLocalNotification()
+      .then(setLocalNotification)
+  }
  
 
 render () {
@@ -71,41 +72,41 @@ render () {
   return (
     <Provider store={createStore(reducer)}>
       <NavigationContainer>
-    <Stack.Navigator initialRouteName="Decks">
-				<Stack.Screen name="Home" component={Tabs}
-          options={{
-            headerStyle: {
-              backgroundColor: black,
-            },
-            headerTintColor: white,
-          }} 
-        />
-        <Stack.Screen name="Deck Details" component={IndividualDeck}
-          options={{
-              headerStyle: {
-                backgroundColor: purple,
-              },
-              headerTintColor: white,
-            }}  
-        />
-        <Stack.Screen name="Create Card" component={CreateCard} 
-        options={{
-              headerStyle: {
-                backgroundColor: purple,
-              },
-              headerTintColor: white,
-            }}  
-        />
-        <Stack.Screen name="Quiz" component={Quiz} 
-        options={{
-              headerStyle: {
-                backgroundColor: purple,
-              },
-              headerTintColor: white,
-            }}  
-        />
-    </Stack.Navigator>
-    </NavigationContainer>
+        <Stack.Navigator initialRouteName="Decks">
+            <Stack.Screen name="Home" component={Tabs}
+              options={{
+                headerStyle: {
+                  backgroundColor: black,
+                },
+                headerTintColor: white,
+              }} 
+            />
+            <Stack.Screen name="Deck Details" component={IndividualDeck}
+              options={{
+                  headerStyle: {
+                    backgroundColor: purple,
+                  },
+                  headerTintColor: white,
+                }}  
+            />
+            <Stack.Screen name="Create Card" component={CreateCard} 
+            options={{
+                  headerStyle: {
+                    backgroundColor: purple,
+                  },
+                  headerTintColor: white,
+                }}  
+            />
+            <Stack.Screen name="Quiz" component={Quiz} 
+            options={{
+                  headerStyle: {
+                    backgroundColor: purple,
+                  },
+                  headerTintColor: white,
+                }}  
+            />
+        </Stack.Navigator>
+      </NavigationContainer>
     </Provider>
   )
   }
